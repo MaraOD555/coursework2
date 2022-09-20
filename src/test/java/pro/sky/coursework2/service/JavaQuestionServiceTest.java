@@ -55,6 +55,20 @@ class JavaQuestionServiceTest {
 
     @Test
     void getRandomQuestion() {
-
+        assertThat(out.getAll()).isEmpty();
+        int size = 5;
+        for (int i = 1; i <= size ; i++) {
+            addOneQuestion("question" + i, "answer" + i);
+        }
+        assertThat(out.getAll()).hasSize(size);
+        assertThat(out.getRandomQuestion()).isIn(out.getAll());
+    }
+    private Question addOneQuestion(String question, String answer){
+        int size = out.getAll().size();
+        Question expected = new Question(question, answer);
+        out.add(expected);
+        assertThat(out.getAll()).hasSize(size + 1);
+        assertThat(out.getAll()).contains(expected);
+        return expected;
     }
 }

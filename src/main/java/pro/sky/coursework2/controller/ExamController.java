@@ -9,12 +9,12 @@ import java.util.Collection;
 
 @RestController
 public class ExamController {
-    private static ExaminerService examinerService;
+    private final ExaminerService examinerService;
 
     public ExamController(ExaminerService examinerService) {
         this.examinerService = examinerService;
     }
-    @GetMapping(value = "/exam/get/{amount}")
+    @GetMapping(value = "/get/{amount}")
     public Collection<Question> getQuestions(@PathVariable int amount){//@PathVariable чтобы внести параметр {amount}
         return examinerService.getQuestions(amount);
     }

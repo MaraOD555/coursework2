@@ -8,11 +8,12 @@ import pro.sky.coursework2.Question;
 import pro.sky.coursework2.service.QuestionService;
 
 import java.util.Collection;
+// /exam выносим в application.properties (пакет проекта/resources), это общее для всех контроллеров - server.servlet.context-path=/exam
 
 @RestController
-@RequestMapping("/exam/java")
+@RequestMapping("/java")
 public class JavaQuestionController {
-    private static QuestionService questionService; // именно сервис, не реализацию
+    private final QuestionService questionService; // именно сервис, не реализацию
 
     public JavaQuestionController(QuestionService questionService) {
         this.questionService = questionService;
